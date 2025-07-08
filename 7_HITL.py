@@ -97,7 +97,7 @@ def call_graph():
         # We manually intercept the call to our sensitive 'log_expense' tool
         if tool_call['name'] == 'log_expense':
             print(f"🤖 Awaiting approval: Do you want to log the expense: \"{tool_call['args']['entry']}\"?")
-            user_input = input("✅ Approve? (yes/no): ").strip().lower()
+            user_input = input("Approve? (yes/no): ").strip().lower()
 
             if user_input == "yes":
                 print("...Approval received, resuming graph to log expense...")
@@ -122,7 +122,7 @@ def call_graph():
     # Step 2: Check the total spending
     msg = "What is my total spending so far?"
     state = graph.invoke({"messages": [{"role": "user", "content": msg}]}, config=config)
-    print("✅ Total:", state["messages"][-1].content)
+    print("Total:", state["messages"][-1].content)
 
 
 if __name__ == "__main__":
